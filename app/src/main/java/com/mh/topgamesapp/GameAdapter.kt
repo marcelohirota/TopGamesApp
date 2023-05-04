@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
 class GameAdapter (val gameList: ArrayList<GameModel>) : RecyclerView.Adapter<GameAdapter.ViewHolder>() {
@@ -12,6 +13,15 @@ class GameAdapter (val gameList: ArrayList<GameModel>) : RecyclerView.Adapter<Ga
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtGame = itemView.findViewById(R.id.cardViewTxt) as TextView
         val imgGame = itemView.findViewById(R.id.cardViewImg) as ImageView
+
+        init {
+            itemView.setOnClickListener {
+                Toast.makeText(
+                    itemView.context,
+                    txtGame.text,
+                    Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun getItemCount(): Int {
